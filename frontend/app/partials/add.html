@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">Add Item</h1>
+            <ol class="breadcrumb">
+                <li><a href="../index.html">Home</a>
+                </li>
+                <li class="active">Add</li>
+            </ol>
+        </div>
+
+    </div>
+
+	<p>Note: not setting any value will make it null.</p>
+	
+    <form>
+		Name:<input type="text" class="form-control" placeholder="Name..."><br>
+
+		ID#:<input type="text" class="form-control" placeholder="I.D. of item..."><br>
+	
+		Symbol:<input type="text" class="form-control" placeholder="Symbol or Formula..."><br>
+		
+		<input type="radio" name="item-type" value="che"> Chemical
+		<input type="radio" name="item-type" value="tar"> Target
+		<input type="radio" name="item-type" value="tox"> Toxicity
+		<input type="radio" name="item-type" value="exp"> Experiment
+		<br><br>
+		
+		<!-->Need way more values than this<-->
+		<!-->Is there some way to add/remove fields based on input?
+		some item types need more entries than others
+		may need to make _addX_ pages for each type<-->
+		
+		<input type="submit" value="Search">
+	</form>
+
+</div>
+<!-- /.container -->
