@@ -40,3 +40,18 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
   console.log("Page Controller reporting for duty.");
 
 });
+
+/**
+* Object creator functions
+*/
+function  chemical(){}
+
+function  assay(){}
+
+function  target(){}
+function target_id(){}
+
+function  toxicity(){}
+
+function  citation(){}
+function citation_id(){}
