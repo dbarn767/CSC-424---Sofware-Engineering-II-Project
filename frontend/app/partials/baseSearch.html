@@ -13,20 +13,25 @@
 
     </div>
 
-	<form>
-		Name:<input type="text" class="form-control" placeholder="Name..."><br>
+	<!-- <form action="/php/test.php" method="post"> -->
+	<form action="../php/test.php" method="post">
+		Name:<input type="text" class="form-control" name="name" placeholder="Name..."><br>
 
-		ID#:<input type="text" class="form-control" placeholder="I.D. of item..."><br>
+		ID#:<input type="text" class="form-control" name="id" placeholder="I.D. of item..."><br>
 	
-		Symbol:<input type="text" class="form-control" placeholder="Symbol or Formula..."><br>
+		Symbol:<input type="text" class="form-control" name="symbol" placeholder="Symbol or Formula..."><br>
 		
 		<input type="radio" name="item-type" value="che"> Chemical
 		<input type="radio" name="item-type" value="tar"> Target
 		<input type="radio" name="item-type" value="tox"> Toxicity
 		<input type="radio" name="item-type" value="exp"> Experiment
+		<input type="radio" name="item-type" value="asy"> Assay
+		<input type="radio" name="item-type" value="cit"> Citation
+		<input type="radio" name="item-type" value="pub"> Published
+		<input type="radio" name="item-type" value="tes"> Tested
 		<br><br>
 		
-		<input type="submit" value="Search">
+		<input type="submit" name="submit" value="Search">
 	</form>
 </div>
 <!-- /.container -->
