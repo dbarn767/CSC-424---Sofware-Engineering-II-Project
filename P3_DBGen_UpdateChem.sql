@@ -10,7 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema ChemDB
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `ChemDB` ;
+
 
 -- -----------------------------------------------------
 -- Schema ChemDB
@@ -21,7 +21,7 @@ USE `ChemDB` ;
 -- -----------------------------------------------------
 -- Table `ChemDB`.`Assay`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `ChemDB`.`Assay` ;
+
 
 CREATE TABLE IF NOT EXISTS `ChemDB`.`Assay` (
   `aid` INT NULL DEFAULT NULL,
@@ -88,7 +88,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ChemDB`.`Citation`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `ChemDB`.`Citation` ;
+
 
 CREATE TABLE IF NOT EXISTS `ChemDB`.`Citation` (
   `citation_id` INT NOT NULL,
@@ -107,7 +107,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ChemDB`.`Target`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `ChemDB`.`Target` ;
+
 
 CREATE TABLE IF NOT EXISTS `ChemDB`.`Target` (
   `target_id` INT NOT NULL,
@@ -138,7 +138,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ChemDB`.`Chemicals`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `ChemDB`.`Chemicals` ;
+
 
 CREATE TABLE IF NOT EXISTS `ChemDB`.`Chemicals` (
   `DSSTox_Substance_Id` VARCHAR(64) NULL DEFAULT NULL,
@@ -160,7 +160,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ChemDB`.`Users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `ChemDB`.`Users` ;
+
 
 CREATE TABLE IF NOT EXISTS `ChemDB`.`Users` (
   `userID` INT NOT NULL AUTO_INCREMENT,
@@ -177,7 +177,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ChemDB`.`Toxicity`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `ChemDB`.`Toxicity` ;
+
 
 CREATE TABLE IF NOT EXISTS `ChemDB`.`Toxicity` (
   `Substance_CASRN` VARCHAR(64) NOT NULL,
@@ -279,7 +279,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ChemDB`.`Published`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `ChemDB`.`Published` ;
+
 
 CREATE TABLE IF NOT EXISTS `ChemDB`.`Published` (
   `aeid` INT NOT NULL,
@@ -302,7 +302,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ChemDB`.`Tested`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `ChemDB`.`Tested` ;
+
 
 CREATE TABLE IF NOT EXISTS `ChemDB`.`Tested` (
   `aeid` INT NOT NULL,
