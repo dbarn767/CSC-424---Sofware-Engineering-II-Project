@@ -1,4 +1,4 @@
-Open MySQL: sudo mysql -u root
+Open MySQL: sudo mysql -u chem -p
 
 Start Apache: sudo /etc/init.d/apache2 start
 
