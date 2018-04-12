@@ -14,7 +14,17 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/">Home</a>
                 </li>
-				<li><a href="#/search">Search</a>
+				<li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Search<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/searchChem">Chemicals</a>
+                        </li>
+                        <li><a href="#/searchTarg">Targets</a>
+                        </li>
+						<li><a href="#/search">Advanced</a>
+						</li>
+                    </ul>
+                </li>
 				<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Add<b class="caret"></b></a>
                     <ul class="dropdown-menu">
