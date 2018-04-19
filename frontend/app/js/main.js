@@ -25,6 +25,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 	.when("/addExp", {templateUrl: "partials/addExp.html", controller: "PageCtrl"})
 	.when("/addTarg", {templateUrl: "partials/addTarg.html", controller: "PageCtrl"})
 	.when("/search", {templateUrl: "partials/search.html", controller: "PageCtrl"})
+	.when("/advSearch", {templateUrl: "partials/advSearch.html", controller: "PageCtrl"})
 	.when("/searchChem", {templateUrl: "partials/searchChem.html", controller: "PageCtrl"})
 	.when("/searchTarg", {templateUrl: "partials/searchTarg.html", controller: "PageCtrl"})
     // else 404
