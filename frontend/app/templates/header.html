@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-            <a class="navbar-brand" href="#/">ChemMOA</a>
+            <a class="navbar-brand" >ChemMOA</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -14,7 +14,19 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/">Home</a>
                 </li>
-				<li><a href="#/search">Search</a>
+				<li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Search<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/searchChem">Chemicals</a>
+                        </li>
+                        <li><a href="#/searchTarg">Targets</a>
+                        </li>
+						<li><a href="#/advSearch">Advanced</a>
+						</li>
+						<li><a href="#/search">Test</a>
+						</li>
+                    </ul>
+                </li>
 				<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Add<b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -30,7 +42,9 @@
 						</li>
                     </ul>
                 </li>
-                <li><a href="#/signIn">Sign In</a>
+                <li><a href="#/signIn">Login</a>
+                </li>
+				<li><a href="#/signUp">Sign Up</a>
                 </li>
             </ul>
         </div>
