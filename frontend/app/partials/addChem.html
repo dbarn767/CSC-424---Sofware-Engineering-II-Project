@@ -15,34 +15,34 @@
 
 	<p>Note: not setting any value will make it null.</p>
 	
-    <form>
-		DSSTox_Substance_Id:<input type="text" class="form-control" placeholder="I.D.">
+    <form action="../php/add_chemical.php" method="post">
+		DSSTox_Substance_Id:<input type="text" class="form-control" name="DSSTox_Substance_Id" placeholder="I.D.">
 
-		DSSTox_Structure_Id:<input type="text" class="form-control" placeholder="I.D.">
+		DSSTox_Structure_Id:<input type="text" class="form-control" name="DSSTox_Structure_Id" placeholder="I.D.">
 	
-		DSSTox_QC-Level:<input type="text" class="form-control" placeholder="Toxicity Level">
+		DSSTox_QC-Level:<input type="text" class="form-control" name="DSSTox_QC" placeholder="Toxicity Level">
 		
-		Substance_Name:<input type="text" class="form-control" placeholder="Name...">
+		Substance_Name:<input type="text" class="form-control" name="Substance_Name" placeholder="Name...">
 		
-		Substance_CASRN:<input type="text" class="form-control" placeholder="CASRN number">
+		Substance_CASRN:<input type="text" class="form-control" name="Substance_CASRN" placeholder="CASRN number">
 		
-		Substance_Type:<input type="text" class="form-control" placeholder="Type...">
+		Substance_Type:<input type="text" class="form-control" name="Substance_Type" placeholder="Type...">
 		
-		Substance_Note:<input type="text" class="form-control" placeholder="Comments here...">
+		Substance_Note:<input type="text" class="form-control" name="Substance_Note" placeholder="Comments here...">
 		
-		Structure_SMILES:<input type="text" class="form-control" placeholder="Structure diagram">
+		Structure_SMILES:<input type="text" class="form-control" name="Structure_SMILES" placeholder="Structure diagram">
 		
-		Structure_InChI:<input type="text" class="form-control" placeholder="Structure diagram">
+		Structure_InChI:<input type="text" class="form-control" name="Structure_InChI" placeholder="Structure diagram">
 		
-		Structure_InChIKey:<input type="text" class="form-control" placeholder="Structure key">
+		Structure_InChIKey:<input type="text" class="form-control" name="Structure_InChIKey" placeholder="Structure key">
 		
-		Structure_Formula:<input type="text" class="form-control" placeholder="Symbol or Formula...">
+		Structure_Formula:<input type="text" class="form-control" name="Structure_Formula" placeholder="Symbol or Formula...">
 		
-		Structure_MolWt:<input type="text" class="form-control" placeholder="Molecular Weight">
+		Structure_MolWt:<input type="text" class="form-control" name="Structure_MolWt" placeholder="Molecular Weight">
 		
 		<br><br>
 		
-		<input type="submit" value="Add">
+		<input type="submit" name="submit" value="Add">
 	</form>
 
 </div>

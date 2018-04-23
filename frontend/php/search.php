@@ -2,15 +2,15 @@
 include 'connectivity.php';
 // REFERENCE USED: webreference.com/programming/php/search/2.html
 // DEBUG OUTPUT
-echo "search.php should be running! \n";
+echo "search.php should be running! <br/>";
 // check for submission
 // retrieve value from posted data
 if ($_POST['submit']){
 	// DEBUG: Print our input
-	echo "You entered for name: ".$_POST['name']."\n";
-	echo "You entered for id: ".$_POST['id']."\n";
-	echo "You entered for symbol/formula: ".$_POST['symbol']."\n";
-	echo "You entered for item-type: ".$_POST['item-type']."\n";
+	//echo "You entered for name: ".$_POST['name']."<br/>";
+	//echo "You entered for id: ".$_POST['id']."<br/>";
+	//echo "You entered for symbol/formula: ".$_POST['symbol']."<br/>";
+	//echo "You entered for item-type: ".$_POST['item-type']."<br/>";
 	
 	// Store our data into variables
 	$name = $_POST['name'];
@@ -31,19 +31,6 @@ if ($_POST['submit']){
 	
 	// Create the query
 	if ($type == "che"){
-		//$query = "SELECT cid, casn, FROM Chemicals WHERE cid LIKE '%".$id."%' OR casn LIKE'%".$name."%'";
-		//$query = "SELECT DSSTox_Substance_Id, Substance_Name FROM Chemicals WHERE DSSTox_Substance_Id LIKE '%".$id."%' OR Substance_Name LIKE '%".$name."%'";
-		//$query = "SELECT * FROM Chemicals";
-		//$query = "SELECT Substance_Name, Substance_CASRN, Structure_SMILES, Structure_InChI, Structure_Formula, Structure_MolWt FROM Chemicals WHERE Substance_Name LIKE '%".$name."%' OR Substance_CASRN LIKE '%".$id."%' OR Structure_SMILES LIKE '%".$symbol."%'";
-		//if ($name != NULL || $id != NULL || $symbol != NULL){
-			/*
-			$query = "SELECT Substance_Name, Substance_CASRN, Structure_SMILES, Structure_InChI, Structure_Formula, Structure_MolWt FROM Chemicals WHERE Substance_Name LIKE '%".$name."%' 
-			AND EXISTS ( 
-			SELECT Substance_Name, Substance_CASRN, Structure_SMILES, Structure_InChI, Structure_Formula, Structure_MolWt FROM Chemicals WHERE Substance_CASRN LIKE '%".$id."%' 
-			) AND EXISTS ( 
-			SELECT Substance_Name, Substance_CASRN, Structure_SMILES, Structure_InChI, Structure_Formula, Structure_MolWt FROM Chemicals WHERE Structure_SMILES LIKE '%".$symbol."%')";
-			*/
-
 		$query = "SELECT Substance_Name, Substance_CASRN, Structure_SMILES, Structure_InChI, Structure_Formula, Structure_MolWt FROM Chemicals";
 		$original = $query;
 		$partCounter = 0;
@@ -55,8 +42,7 @@ if ($_POST['submit']){
 			if($partCounter >= 1){
 				$combiner = " AND EXISTS (";
 			}
-			$query = $query . $combiner . "SELECT Substance_Name, Substance_CASRN, Structure_SMILES, Structure_InChI, Structure_Formula, Structure_MolWt FROM Chemicals WHERE Substance_Name LIKE '%".$name."%'";
-			//$combineFlag = true;
+			$query = $query . $combiner . $original. " WHERE Substance_Name LIKE '%".$name."%'";
 			$partCounter += 1;
 		}
 		if ($id != NULL){
@@ -68,7 +54,7 @@ if ($_POST['submit']){
 				$combiner = " AND EXISTS (";
 			}
 
-			$query = $query . $combiner . "SELECT Substance_Name, Substance_CASRN, Structure_SMILES, Structure_InChI, Structure_Formula, Structure_MolWt FROM Chemicals WHERE Substance_CASRN LIKE '%".$id."%'";
+			$query = $query . $combiner . $original . " WHERE Substance_CASRN LIKE '%".$id."%'";
 			$partCounter += 1;
 		}
 		if ($symbol != NULL){
@@ -80,25 +66,48 @@ if ($_POST['submit']){
 				$combiner = " AND EXISTS (";
 			}
 
-			$query = $query . $combiner . "SELECT Substance_Name, Substance_CASRN, Structure_SMILES, Structure_InChI, Structure_Formula, Structure_MolWt FROM Chemicals WHERE Structure_SMILES LIKE '%".$symbol."%'";
+			$query = $query . $combiner . $original . " WHERE Structure_SMILES LIKE '%".$symbol."%'";
 			$partCounter += 1;
 		}
 		while ($partCounter - 1 > 0){
 			$query = $query . ")";
 			$partCounter -= 1;
 		}
-		
-		echo "\n----------------------------------------\n";
-		echo $query;
-		echo  "\n----------------------------------------\n";
 	}
 	elseif ($type == "tox"){
 		$query = "SELECT * FROM Toxicity";
 	}
 	elseif ($type == "tar"){
-		//$query = "SELECT * FROM Target";
-		//$query = "SELECT target_id FROM Target WHERE target_id LIKE '%".$id."%'";
-		$query = "SELECT target_id, intended_target_official_full_name, intended_target_gene_name, intended_target_official_symbol, intended_target_gene_symbol, technological_target_official_full_name, technological_target_gene_name, technological_target_official_symbol, technological_target_gene_symbol FROM Target WHERE target_id LIKE '%".$id."%' OR intended_target_official_full_name LIKE '%".$name."%'";
+		$query = "SELECT target_id, intended_target_official_full_name, intended_target_gene_name, intended_target_official_symbol, intended_target_gene_symbol, technological_target_official_full_name, technological_target_gene_name, technological_target_official_symbol, technological_target_gene_symbol FROM Target";
+		$original = $query;
+		$partCounter = 0;
+		if ($name != NULL){
+			if ($query == $original) {
+				$query = "";
+			}
+			$combiner = "";
+			if($partCounter >= 1){
+				$combiner = " AND EXISTS (";
+			}
+			$query = $query . $combiner . $orignal . " WHERE intended_target_official_full_name LIKE '%".$name."%'";
+			$partCounter += 1;
+		}
+		if ($id != NULL){
+			if ($query == $original) {
+				$query = "";
+			}
+			$combiner = "";
+			if ($partCounter >= 1){
+				$combiner = " AND EXISTS (";
+			}
+
+			$query = $query . $combiner . $original . " WHERE target_id LIKE '%".$id."%'";
+			$partCounter += 1;
+		}
+		while ($partCounter - 1 > 0){
+			$query = $query . ")";
+			$partCounter -= 1;
+		}
 	}
 	elseif ($type == "asy"){
 		//$query = "SELECT aeid FROM Assay WHERE aeid LIKE '%".$id."%'";
@@ -115,50 +124,59 @@ if ($_POST['submit']){
 		$query = "SELECT * FROM Tested";
 	}
 	else{
-		echo "ERROR: No table specified! \n";
+		echo "ERROR: No table specified! <br/>";
 	}
 
 	// DEBUG
-	echo "DEBUG: query to use was determined to be ".$query."!";
-	echo "DEBUG: Checking our connection!";
+	echo "--------------------------- QUERY ------------------------------<br/>";
+	echo $query."<br/>";
+	echo "--------------------------- QUERY ------------------------------<br/>";
+	//echo "DEBUG: Rechecking our connection! <br/>";
 	
 	if (!$mysqli)
 	//if (!$conn)
 	{
-		echo "ERROR:No connection before getting result in search.php!";
+		echo "ERROR:No connection before getting result in search.php! <br/>";
 	}
 	
 	if (mysqli_ping($mysqli)){
 	//if (mysqli_ping($conn)){
-		echo "Our connection is ok!\n";
+		echo "Our connection is ok! <br/>";
 	} else {
-		echo "ERROR: connection is NOT ok!\n";
-		echo "ERROR MESSAGE: ".mysqli_error($mysqli);
-		//echo "ERROR MESSAGE: ".mysqli_error($conn);
+		echo "ERROR: connection is NOT ok! <br/>";
+		echo "ERROR MESSAGE: ".mysqli_error($mysqli)."<br/>";
 	}
 
-	echo "DEBUG: About to get result!";
+	//echo "DEBUG: About to get result! <br/>";
 	// Get a result
-	//$result = mysql_query($query);
-	//$result = mysqli_query($mysqli, $query); // Continues on
-	$result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli)); // Sudden stop in code... why?
-	//$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+	$result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 
 	$numOfRows=mysqli_num_rows($result);
 	//if ($result->num_rows === 0)
 	if ($numOfRows == 0)
 	{
-		echo "--NO RESULTS FOUND!--";
+		echo "--NO RESULTS FOUND!-- <br/>";
 	}
 	else
 	{
-		echo "Result returned ".$numOfRows." number of rows!";
+		echo "Result returned ".$numOfRows." number of rows! <br/>";
 	}
 
 	// DEBUG
-	echo "DEBUG: About to try to print result based on type!";
+	//echo "DEBUG: About to try to print result based on type! <br/>";
 	
 	// Create while loop and loop through result set
+	while ($row=msyqli_fetch_array($result, MYSQLI_NUM)){
+		echo "<ul>";
+		echo "<li>";
+		for ($i = 0; $i < $row.length; $i++){
+			echo " | ".$row[$i]." | ";
+		}
+		echo "</li>";
+		echo "</ul>";
+	}
+	
+	/*
 	if ($type == "che"){
 		while ($row=mysqli_fetch_array($result)){
 			
@@ -170,7 +188,7 @@ if ($_POST['submit']){
 			$Structure_MolWt=$row['Structure_MolWt'];
 			
 			echo "<ul>\n";
-			echo "<li>".$Substance_Name." ".$Substance_CASRN." ".$Structure_SMILES." ".$Structure_InChI." ".$Structure_Formula." ".$Structure_MolWt."</li>\n";
+			echo "<li>".$Substance_Name." | ".$Substance_CASRN." | ".$Structure_SMILES." | ".$Structure_InChI." | ".$Structure_Formula." | ".$Structure_MolWt."</li>\n";
 			echo "</ul>";
 		}
 	}
@@ -315,10 +333,10 @@ if ($_POST['submit']){
 			echo "</ul>";
 		}
 	}
-	
+	*/
+	mysqli_close($mysqli);
 }
 
-echo "DEBUG: Ending search.php";
-mysqli_close($mysqli);
-//mysqli_close($conn);
+echo "DEBUG: Ending search.php <br/>";
+//mysqli_close($mysqli);
 ?>
