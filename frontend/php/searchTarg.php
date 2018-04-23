@@ -45,7 +45,7 @@ if ($_POST['submit']){
 	while ($row=mysqli_fetch_array($result, MYSQLI_NUM)){
 		echo "<ul>";
 		echo "<li>";
-		for ($i = 0; $i < $row.length; $i++){
+		for ($i = 0; $i < count($row); $i++){
 			echo " | ".$row[$i]." | ";
 		}
 		echo "</li>";
