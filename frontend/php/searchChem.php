@@ -45,7 +45,7 @@ if ($_POST['submit']){
 	$result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 	
 	// Create while loop and loop through result set
-	while ($row=msyqli_fetch_array($result, MYSQLI_NUM)){
+	while ($row=mysqli_fetch_array($result, MYSQLI_NUM)){
 		echo "<ul>";
 		echo "<li>";
 		for ($i = 0; $i < $row.length; $i++){
