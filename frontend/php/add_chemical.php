@@ -5,7 +5,7 @@ if ($_POST['submit']){
 	$query = "INSERT INTO Chemicals (".
 			 "DSSTox_Substance_Id, ".
 			 "DSSTox_Structure_Id, ".
-			 "DSSTox_QC-Level, ".
+			 "`DSSTox_QC-Level`, ".
 			 "Substance_Name, ".
 			 "Substance_CASRN, ".
 			 "Substance_Type, ".
