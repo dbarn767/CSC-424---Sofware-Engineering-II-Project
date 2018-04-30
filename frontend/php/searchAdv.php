@@ -168,7 +168,7 @@ if ($_POST['submit']){
 	//echo "DEBUG: About to try to print result based on type! <br/>";
 	
 	// Create while loop and loop through result set
-	while ($row=msyqli_fetch_array($result, MYSQLI_NUM)){
+	while ($row=mysqli_fetch_array($result, MYSQLI_NUM)){
 		echo "<ul>";
 		echo "<li>";
 		for ($i = 0; $i < count($row); $i++){
