@@ -13,14 +13,14 @@
 
     </div>
 
-	<form>
-		Name:<input type="text" class="form-control" placeholder="Name..."><br>
+	<form action="../php/searchAdv.php" method="post">
+		Name:<input type="text" class="form-control" name="name" placeholder="Name..."><br>
 
-		ID#:<input type="text" class="form-control" placeholder="I.D. of item..."><br>
+		ID#:<input type="text" class="form-control" name="id" placeholder="I.D. of item..."><br>
 	
-		Symbol:<input type="text" class="form-control" placeholder="Symbol or Formula..."><br>
+		Symbol:<input type="text" class="form-control" name="symbol" placeholder="Symbol or Formula..."><br>
 		
-		Molecular Weight:<input type="text" class="form-control" placeholder="Weight of chemical or target.."><br>
+		Molecular Weight:<input type="text" class="form-control" name="weight" placeholder="Weight of chemical or target.."><br>
 		
 		<input type="radio" name="item-type" value="che"> Chemical
 		<input type="radio" name="item-type" value="tar"> Target
@@ -28,7 +28,7 @@
 		<input type="radio" name="item-type" value="exp"> Experiment
 		<br><br>
 		
-		<input type="submit" value="Search">
+		<input type="submit" name="submit" value="Search">
 	</form>
 </div>
 <!-- /.container -->
